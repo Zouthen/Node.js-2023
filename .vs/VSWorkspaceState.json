@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\00_Miscellaneous"
+    "\\00_Miscellaneous",
+    "\\01_First_Server",
+    "\\Mountains_REST_API"
   ],
-  "SelectedNode": "\\00_Miscellaneous\\functions.js",
+  "SelectedNode": "\\Mountains_REST_API\\app.js",
   "PreviewInSolutionExplorer": false
 }
