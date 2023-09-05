@@ -1,30 +1,33 @@
-// import express
-// const express = require("express");
-// instanciate express
-// const app = express();
+// import Express
+const express = require("express");
+// instantiate Express
+const app = express();
 
-const app = require("express")();
+// const app = require("express")();
 
-const otherData = 123;
+app.use(express.json());
 
+/*
 app.get("/", (req, res) => {
-    res.send({data: "This is the first request handler", otherData: otherData});
+    res.send({ data: "This is the first request handler" });
 });
-
-// task: create a dog endpoint that returs woof
 
 app.get("/dog", (req, res) => {
     console.log(req.params);
     res.send({ dog: "Woof" });
-    
 });
 
-app.get("/dog/:firstValue/:someOtherValue", (req,res) => {
+app.get("/dog/:firstValue/:someOtherValue", (req, res) => {
     console.log(req.params);
     console.log(req.params.someOtherValue);
     res.send({ dog: "Meow" });
 });
-   
+
+app.get("/cat", (req, res) => {
+    console.log(req.query);
+    res.send({ data: req.query });
+});
+
 let balance = 100;
 app.get("/wallet/:withdrawalAmount", (req, res) => {
     const withdrawalAmount = req.params.withdrawalAmount;
@@ -32,10 +35,16 @@ app.get("/wallet/:withdrawalAmount", (req, res) => {
 
     if (balance < 0) {
         balance += withdrawalAmount;
-        res.send({ message: "You cant withdraw. No more money left" });
+        res.send({ message: "You can't withdraw. No more money left."});
     } else {
-        res.send({ message: `You have withdrawn ${req.params.withdrawalAmount}, your new balance is ${balance}` });
-    }   
+        res.send({ message: `You've withdrawn ${withdrawalAmount}`});
+    }
+});
+*/
+
+app.post("/giveMeTheBody", (req, res) => {
+    console.log(req.body);
+    res.send(req.body);
 });
 
 
@@ -43,4 +52,5 @@ app.get("/wallet/:withdrawalAmount", (req, res) => {
 // 443 https
 // 8080 http developer port
 // 9090 https developer port
+
 app.listen(8080);
