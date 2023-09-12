@@ -2,3 +2,6 @@ Mountains CRUD API
 
 GET     /mountains
 GET     /mountains/{id}
+POST    /mountains/
+PATCH   /mountains/{id}
+DELETE  /mountains/{id}

@@ -44,7 +44,7 @@ app.get("/wallet/:withdrawalAmount", (req, res) => {
 
 app.post("/giveMeTheBody", (req, res) => {
     console.log(req.body);
-    res.send({data:req.body});
+    res.send(req.body);
 });
 
 

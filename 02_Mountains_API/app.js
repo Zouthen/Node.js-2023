@@ -1,13 +1,16 @@
 const express = require("express");
 const app = express();
+
 app.use(express.json());
 
 
-const mountains = [
+let mountains = [
     { id: 1, name: "Mount Fuji", height: "3776" },
     { id: 2, name: "Mount Kilimanjaro", height: "5895" },
     { id: 3, name: "Himmelbjerget", height: "147" },
 ];
+
+const currentID = 3;
 
 // Show all mountains
 app.get("/mountains", (req, res) => {
@@ -25,7 +28,7 @@ app.get("/mountains/:id", (req,res) => {
 
 // 2nd solution
 app.get("/mountains/:id", (req, res) => {
-    const pathVariableMountainId = parseInt(req.params.id);
+    const pathVariableMountainId = Number(req.params.id);
     if (!pathVariableMountainId) {
         res.send({error: "The mountain id must be a number"});
     } else {
@@ -42,7 +45,8 @@ app.post("/mountains", (req, res) => {
     if (!newMountain.name || !newMountain.height) {
         res.status(400).send({ error: "Name and height are required for creating a mountain" });
     } else {
-        newMountain.id = mountains.length + 1;
+        newMountain.id = ++currentID;
+        //newMountain.id = mountains.length + 1;
         mountains.push(newMountain);
         res.status(201).send({ data: newMountain });
     }
@@ -51,23 +55,37 @@ app.post("/mountains", (req, res) => {
 
 // Delete a mountain by id
 app.delete("/mountains/:id", (req, res) => {
-    const pathVariableMountainId = parseInt(req.params.id);
+    const pathVariableMountainId = Number(req.params.id);
     if (isNaN(pathVariableMountainId)) {
         res.status(400).send({ error: "The mountain id must be a number" });
     } else {
-        const index = mountains.findIndex((mountain) => mountain.id === pathVariableMountainId);
-        if (index !== -1) {
-            const deletedMountain = mountains.splice(index, 1)[0];
+        const foundIndex = mountains.findIndex((mountain) => mountain.id === pathVariableMountainId);
+        if (foundIndex !== -1) {
+            const deletedMountain = mountains.splice(foundIndex, 1);
             res.send({ data: deletedMountain });
         } else {
-            res.status(404).send({ error: "Mountain not found" });
+            res.status(404).send({ error: "Mountain not found by id ", pathVariableMountainId });
         }
     }
 });
 
+// Anders solution
 // Update a mountain by id
 app.patch("/mountains/:id", (req, res) => {
-    const pathVariableMountainId = parseInt(req.params.id);
+    const foundIndex = mountains.findIndex((mountain) => mountain.id === Number(req.params.id));
+    if (foundIndex === -1) {
+        res.status(404).send({ error: `Mountain not found by id ${req.params.id}` });
+    } else {
+        mountains[foundIndex] = { ...mountains[foundIndex], ...req.body, id: Number(req.params.id) };
+        res.send({ data: mountains[foundIndex] });
+    }
+});
+
+
+/*
+// Update a mountain by id
+app.patch("/mountains/:id", (req, res) => {
+    const pathVariableMountainId = Number(req.params.id);
     if (isNaN(pathVariableMountainId)) {
         res.status(400).send({ error: "The mountain id must be a number" });
     } else {
@@ -91,7 +109,7 @@ app.patch("/mountains/:id", (req, res) => {
         }
     }
 });
-
+*/
 
 const PORT = 8080;
 app.listen(PORT, (error) => {
