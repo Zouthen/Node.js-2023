@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- solution 3 link -->
+    <!-- <link rel="stylesheet" href="home.css"> -->
+
+    <!-- solution 2 in-file -->
+    <style>
+        #title {
+            color: red;
+        }
+    </style>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>First HTML Server</title>
 </head>
 <body>
-    <h1>Home!</h1>
+    <!-- solution 1 -->
+    <!-- inline styling -->
+    <!-- <h1 style="color: red;">Home!</h1> -->
+
+    <h1 id="title">Home!</h1>
+
+    <h1 id="welcomeMessage"></h1>
+
+    <a href="/secondPage">Second Page</a>
+    
+
+    <script>
+        // add them user name to the text
+                fetch("/welcomeMessage?user=Michael")
+                .then((response) => response.json())
+                .then((result) => {
+                    const welcomeMessageHeader = document.getElementById("welcomeMessage")
+                    welcomeMessageHeader.innerText = result.data;
+                });             
+    </script>
+
 </body>
 </html>
