@@ -7,21 +7,24 @@
   <body>
     <h1>Current Time</h1>
     <p id="currentTime">Loading...</p>
-    <br>
     <a href="/elapsed">Calculate Time Elapsed</a>
 
     <script>
-    
-  const currentTimeElement = document.getElementById('currentTime');
+      document.addEventListener('DOMContentLoaded', () => {
+        const currentTimeElement = document.getElementById('currentTime');
 
-  function updateCurrentTime() {
-    const currentTime = new Date().toLocaleTimeString();
-    currentTimeElement.textContent = `Current Time: ${currentTime}`;
-  }
-  updateCurrentTime();
-  setInterval(updateCurrentTime, 1000);
+        // Function to update the current time
+        function updateCurrentTime() {
+          const currentTime = new Date().toLocaleTimeString();
+          currentTimeElement.textContent = `Current Time: ${currentTime}`;
+        }
 
-   </script>
+        // Update the current time initially
+        updateCurrentTime();
 
+        // Update the current time every second
+        setInterval(updateCurrentTime, 1000);
+      });
+    </script>
   </body>
 </html>
