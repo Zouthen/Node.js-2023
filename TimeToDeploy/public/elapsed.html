@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Time Website</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+  </head>
+  <body>
+    <h1>Time Elapsed and Time Remaining</h1>
+    <p id="eventDate">Event Date: Loading...</p>
+    <p id="elapsedTime">Time elapsed: Calculating...</p>
+
+    <h2>Calculate Time Remaining</h2>
+    <form id="remainingForm">
+      <label for="targetDate">Enter a Target Date:</label>
+      <input type="datetime-local" id="targetDate" required>
+      <button type="submit">Calculate</button>
+    </form>
+    <br>
+    <p id="remainingTime">Time remaining: Calculating...</p>
+    <br><br>
+    
+    <a href="/">Back to Homepage</a>
+
+    <script src="/elapsed-script.js"></script>
+  </body>
+</html>

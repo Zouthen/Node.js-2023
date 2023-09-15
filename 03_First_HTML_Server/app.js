@@ -22,7 +22,7 @@ app.get("/welcomeMessage", (req, res) => {
         res.send({data: `Welcome to my fancy website, ${clientName}`});
     }
 });
-
+    
 // ===================================================
 const PORT = 8080;
 app.listen(PORT, (error) => {
