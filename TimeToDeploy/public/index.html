@@ -10,6 +10,19 @@
     <br>
     <a href="/elapsed">Calculate Time Elapsed</a>
 
-    <script src="/script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+  const currentTimeElement = document.getElementById('currentTime');
+
+  function updateCurrentTime() {
+    const currentTime = new Date().toLocaleTimeString();
+    currentTimeElement.textContent = `Current Time: ${currentTime}`;
+  }
+
+  updateCurrentTime();
+  setInterval(updateCurrentTime, 1000);
+});
+    </script>
+    
   </body>
 </html>
