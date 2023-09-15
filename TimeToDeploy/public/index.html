@@ -1,13 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+body, h1, p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+p {
+  font-size: 18px;
+  color: #666;
+}
+
+a {
+  color: #0078d4;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+#currentTime {
+  font-size: 20px;
+  margin-top: 20px;
+}
+    </style>
+
     <title>Time Website</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
     <h1>Current Time</h1>
     <p id="currentTime">Loading...</p>
+    <br>
     <a href="/elapsed">Calculate Time Elapsed</a>
+
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -26,5 +65,7 @@
         setInterval(updateCurrentTime, 1000);
       });
     </script>
+
+
   </body>
 </html>

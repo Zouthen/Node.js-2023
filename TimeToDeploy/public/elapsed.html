@@ -1,26 +1,134 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    <style>
+      body, h1, p {
+        margin: 0;
+        padding: 0;
+      }
+      
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        text-align: center;
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 24px;
+        color: #333;
+      }
+      
+      p {
+        font-size: 18px;
+        color: #666;
+      }
+      
+      a {
+        color: #0078d4;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      
+      a:hover {
+        text-decoration: underline;
+      }
+      #eventDate {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+#elapsedTime {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+}
+          </style>
+
     <title>Time Website</title>
-    <link rel="stylesheet" type="text/css" href="/styles.css">
   </head>
   <body>
-    <h1>Time Elapsed and Time Remaining</h1>
-    <p id="eventDate">Event Date: Loading...</p>
-    <p id="elapsedTime">Time elapsed: Calculating...</p>
+    <body>
+      <h1>Time Elapsed and Time Remaining</h1>
+      <p id="eventDate">Event Date: Loading...</p>
+      <p id="elapsedTime">Time elapsed: Calculating...</p>
+  
+      <h2>Calculate Time Remaining</h2>
+      <form id="remainingForm">
+        <label for="targetDate">Enter a Target Date:</label>
+        <input type="datetime-local" id="targetDate" required>
+        <button type="submit">Calculate</button>
+      </form>
+      <br>
+      <p id="remainingTime">Time remaining: Calculating...</p>
+      <br><br>
+      <a href="/">Back to Homepage</a>
+  
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const eventDateElement = document.getElementById('eventDate');
+          const elapsedTimeElement = document.getElementById('elapsedTime');
+          const remainingForm = document.getElementById('remainingForm');
+          const targetDateInput = document.getElementById('targetDate');
+          const remainingTimeElement = document.getElementById('remainingTime');
+  
+          // Replace this with your specific event or date
+          const eventDate = new Date('1997-06-03');
+          eventDateElement.textContent = `Michael's birth: ${eventDate.toLocaleString()}`;
+  
+          // Function to calculate and display time elapsed
+          function calculateTimeElapsed() {
+            const currentDate = new Date();
+  
+            // Calculate the time difference in milliseconds
+            const timeElapsed = currentDate - eventDate;
+  
+            // Convert milliseconds to days, hours, minutes, and seconds
+            const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+  
+            elapsedTimeElement.textContent = `Time elapsed: ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+          }
+  
+          // Calculate time elapsed initially
+          calculateTimeElapsed();
+  
+          // Update the time elapsed every second
+          setInterval(calculateTimeElapsed, 1000);
+  
+          // Function to calculate and display time remaining
+          function calculateTimeRemaining() {
+            const targetDate = new Date(targetDateInput.value);
+            const currentDate = new Date();
+  
+            if (isNaN(targetDate)) {
+              remainingTimeElement.textContent = 'Invalid target date';
+              return;
+            }
+  
+            // Calculate the time difference in milliseconds
+            const timeRemaining = targetDate - currentDate;
+  
+            // Convert milliseconds to days, hours, minutes, and seconds
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+  
+            remainingTimeElement.textContent = `Time remaining: ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+          }
+  
+          // Handle form submission to calculate time remaining
+          remainingForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            calculateTimeRemaining();
+          });
+        });
+      </script>
 
-    <h2>Calculate Time Remaining</h2>
-    <form id="remainingForm">
-      <label for="targetDate">Enter a Target Date:</label>
-      <input type="datetime-local" id="targetDate" required>
-      <button type="submit">Calculate</button>
-    </form>
-    <br>
-    <p id="remainingTime">Time remaining: Calculating...</p>
-    <br><br>
-    
-    <a href="/">Back to Homepage</a>
-
-    <script src="/elapsed-script.js"></script>
   </body>
 </html>
