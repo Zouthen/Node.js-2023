@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
 
-console.log(__dirname);
+app.use(express.static("public"));
+
+const {getWelcomeMessage} = require("./util/welcomeMessageUtil.js");
+
+//console.log(__dirname);
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/home.html");
@@ -13,14 +17,12 @@ app.get("/secondPage", (req, res) => {
 });
 
 // ===================================================
+//console.log(welcomeMessageUtil);
 
 app.get("/welcomeMessage", (req, res) => {
     const clientName = req.query.user;
-    if (!clientName) {
-        res.send({ data: "Hello stranger"})
-    } else {
-        res.send({data: `Welcome to my fancy website, ${clientName}`});
-    }
+    const welcomeMessage = getWelcomeMessage(clientName);
+    res.send({ data: welcomeMessage });
 });
     
 // ===================================================
