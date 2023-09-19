@@ -1,0 +1,23 @@
+{
+  "name": "mandatory1",
+  "version": "0.0.1",
+  "description": "Mandatory assignment 01",
+  "type":"module",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zouthen/Node.js-2023.git"
+  },
+  "author": "Michael Beenfeldt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zouthen/Node.js-2023/issues"
+  },
+  "homepage": "https://github.com/Zouthen/Node.js-2023#readme"
+}
