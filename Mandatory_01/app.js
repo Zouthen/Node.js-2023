@@ -3,6 +3,8 @@ const app = express();
 
 import path from "path";
 
+console.log(path.resolve("./public/frontpage.html"));
+
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
