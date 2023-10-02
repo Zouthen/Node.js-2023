@@ -8,6 +8,8 @@ const app = express();
 
 app.use(express.static("public"));
 
+const {getWelcomeMessage} = require("./util/welcomeMessageUtil.js");
+
 app.get("/", (req, res) => {
     //res.sendFile(path.resolve("./public/frontpage.html"));
     res.sendFile(__dirname + '/public/frontpage.html');
@@ -28,6 +30,13 @@ app.get('/scope', (req, res) => {
 app.get('/setup', (req, res) => {
     res.sendFile(__dirname + '/public/setup.html');
   });
+
+
+  app.get("/welcomeMessage", (req, res) => {
+    const clientName = req.query.user;
+    const welcomeMessage = getWelcomeMessage(clientName);
+    res.send({ data: welcomeMessage });
+});
 
 
 
