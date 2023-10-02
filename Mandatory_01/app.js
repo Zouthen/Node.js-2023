@@ -1,5 +1,4 @@
-//import express from "express";
-const express = require("express");
+import express from "express";
 const app = express();
 
 import path from "path";
@@ -9,7 +8,8 @@ console.log(path.resolve("./public/frontpage.html"));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-    res.sendFile(path.resolve("./public/frontpage.html"));
+    //res.sendFile(path.resolve("./public/frontpage.html"));
+    res.sendFile(__dirname + '/public/frontpage.html');
 });
 
 
