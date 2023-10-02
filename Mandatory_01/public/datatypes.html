@@ -37,12 +37,60 @@
     <br>
 
     <h2>Data types</h2>
-    <h3>- String, Number, Boolean, BigInteger, undefined, null, Object, Symbol</h3>
-    <h3>- Objects: object, Array, Date</h3>
-    <h3>- type coercion</h3>
-    <h3>- typeof</h3>
-    <h3>- == vs ===</h3>
-    <h3>- truthy vs falsy</h3>
-    <h3>- NaN</h3>
-</body>
+      <h3>- String => This is for handling text or words.</h3>
+      <h3>- Number => This is for handling numbers.</h3>
+      <h3>- Boolean => This is for handling true or false.</h3>
+      <h3>- BigInteger => This is for handling big numbers.</h3>
+      <h3>- undefined => This is for handling undefined values.</h3>
+      <h3>- null => This is for handling null values.</h3>
+      <h3>- Object => This is for handling objects.</h3>
+      <h3>- Symbol => This is for handling symbols.</h3>
+
+    <br>
+
+    <h2>Objects: object, Array, Date</h2>
+      <h3>- Object => An Object is like a container that holds data in key-value pairs. Keys are strings, and values can be of any data type, including other objects.  </h3>
+      <h3>- Array => An Array is a special type of object that holds multiple values in a single variable. </h3>
+      <h3>- Date => The Date object is used to work with dates and times.</h3>
+
+    <br>
+
+    <h2>Type coercion</h2>
+      <h3>Implicit Type Coercion: This happens automatically when you perform operations between values of different types. JavaScript tries to convert one or both of the values to a common type before performing the operation. </h3>
+      <h3>Explicit Type Coercion: This happens when you use a method like Number() or String() to explicitly convert a value to a specific type. </h3>
+      
+    <br>
+
+    <h2>typeof</h2>
+      <h3>The typeof operator in JavaScript is used to determine the data type of a given variable or expression. It returns a string indicating the type of the operand.</h3>
+      
+    <br>
+
+    <h2>== vs ===</h2>
+      <h3>Loose Equality (==): The == operator performs type coercion if the operands are of different types. For example, "5" == 5 will return true because the string is coerced to a number before comparison.</h3>
+      <h3>Strict Equality (===): he === operator, on the other hand, does not perform type coercion. It checks both the value and the type of the operands. If they are of different types, the comparison returns false without attempting to convert them.</h3>
+      
+    <br>
+
+    <h2>truthy vs falsy</h2>
+      <h3>Truthy Values:
+        Values that evaluate to true when used in a boolean context.
+        Examples of truthy values include:
+        - Non-empty strings: "hello", "123".
+        - Non-zero numbers: 42, -3.14.
+        - Arrays and objects: [], {}.
+        - The special value true.</h3>
+      <h3>Falsy Values:
+        Values that evaluate to false when used in a boolean context.
+        Examples of falsy values include:
+        - The empty string: "".
+        - The number 0 and NaN (Not-a-Number).
+        - null and undefined.
+        - The special value false.</h3>
+    <br>
+
+    <h2>NaN</h2>
+        <h3> NaN stands for "Not-a-Number" and is a special value in JavaScript that represents the result of an operation that should return a number but doesn't. </h3>
+
+  </body>
 </html>
