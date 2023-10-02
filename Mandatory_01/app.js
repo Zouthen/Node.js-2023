@@ -2,9 +2,9 @@
 const express = require("express");
 const app = express();
 
-import path from "path";
+//import path from "path";
 
-console.log(path.resolve("./public/frontpage.html"));
+//console.log(path.resolve("./public/frontpage.html"));
 
 app.use(express.static("public"));
 
@@ -12,6 +12,23 @@ app.get("/", (req, res) => {
     //res.sendFile(path.resolve("./public/frontpage.html"));
     res.sendFile(__dirname + '/public/frontpage.html');
 });
+
+app.get('/datatypes', (req, res) => {
+    res.sendFile(__dirname + '/public/datatypes.html');
+  });
+
+app.get('/frontend', (req, res) => {
+    res.sendFile(__dirname + '/public/frontend.html');
+  });
+
+app.get('/scope', (req, res) => {
+    res.sendFile(__dirname + '/public/scope.html');
+  });
+
+app.get('/setup', (req, res) => {
+    res.sendFile(__dirname + '/public/setup.html');
+  });
+
 
 
 const PORT = 8080;
