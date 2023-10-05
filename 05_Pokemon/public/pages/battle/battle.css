@@ -1,0 +1,13 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pokemon-strength {
+    color: red;
+}
+
+#pokemon-image {
+    height: 30vh;
+}
