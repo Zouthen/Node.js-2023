@@ -14,8 +14,9 @@ body {
     max-width: 100%;
     height: auto;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 10px;
   }
+
   
   h2 {
     border-bottom: 2px solid #000000;
