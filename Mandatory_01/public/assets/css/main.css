@@ -1,0 +1,28 @@
+#logo {
+  width: 10vw;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  
+  
+}
+
+body {
+  font-family: 'Arial', sans-serif !important;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+a:link, a:visited {
+  background-color: red;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
