@@ -10,7 +10,7 @@ import { loginPage, frontpagePage, setupPage, datatypesPage, scopePage, frontend
 
 // ====================== HTML  ======================
 
-app.get("/login", (req, res) => {
+app.get("/", (req, res) => {
     res.send(loginPage);
 });
 
