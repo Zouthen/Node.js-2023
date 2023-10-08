@@ -1,4 +1,10 @@
-import { readPage, renderPage } from "./templateEngine.js";
+import { readPage, renderPage ,renderPageLogin} from "./templateEngine.js";
+
+const login = readPage("./public/pages/login/login.html");
+export const loginPage = renderPageLogin(login, {
+    tabTitle: "Login",
+    cssLinks: `<link rel="stylesheet" href="/assets/css/pages.css">`
+});
 
 const frontpage = readPage("./public/pages/frontpage/frontpage.html");
 export const frontpagePage = renderPage(frontpage, {

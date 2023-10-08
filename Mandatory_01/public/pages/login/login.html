@@ -1,0 +1,74 @@
+<div id="login-container">
+    <h2>Login</h2>
+    <form id="login-form" onsubmit="return validateLogin()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter Username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter Password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<br><br>
+
+<div>
+    <p>Username = admin</p>
+    <p>Password = password</p>
+</div>
+
+<br><br>
+
+<h2>Time Elapsed</h2>
+      <p id="eventDate">Event Date: Loading...</p>
+      <p id="elapsedTime">Time elapsed: Calculating...</p>
+
+<script>
+    function validateLogin() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        var hardcodedUsername = 'admin';
+        var hardcodedPassword = 'password';
+
+        if (username === hardcodedUsername && password === hardcodedPassword) {
+            window.location.href = '/frontPage';
+        } else {
+            alert('Invalid username or password. Please try again.');
+        }
+        return false;
+    }
+</script>
+
+<script>
+     document.addEventListener('DOMContentLoaded', () => {
+          const eventDateElement = document.getElementById('eventDate');
+          const elapsedTimeElement = document.getElementById('elapsedTime');
+          const remainingForm = document.getElementById('remainingForm');
+          const targetDateInput = document.getElementById('targetDate');
+          const remainingTimeElement = document.getElementById('remainingTime');
+  
+            // Set the date we're counting down to
+          const eventDate = new Date('2022-01-31');
+          eventDateElement.textContent = `Michael's start at KEA: ${eventDate.toLocaleDateString()}`;
+  
+          function calculateTimeElapsed() {
+            const currentDate = new Date();
+  
+            const timeElapsed = currentDate - eventDate;
+  
+            const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+  
+            elapsedTimeElement.textContent = `Time elapsed: ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+          }
+  
+          calculateTimeElapsed();
+  
+          setInterval(calculateTimeElapsed, 1000);
+
+        });
+</script>

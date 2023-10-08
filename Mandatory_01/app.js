@@ -6,12 +6,15 @@ app.use(express.static("public"));
 
 // ====================== Read Pages  ======================
 
-import { frontpagePage, setupPage, datatypesPage, scopePage, frontendPage, contactPage } from "./util/preparePages.js";
+import { loginPage, frontpagePage, setupPage, datatypesPage, scopePage, frontendPage, contactPage } from "./util/preparePages.js";
 
 // ====================== HTML  ======================
 
+app.get("/login", (req, res) => {
+    res.send(loginPage);
+});
 
-app.get("/", (req, res) => {
+app.get("/frontPage", (req, res) => {
     res.send(frontpagePage);
 });
 

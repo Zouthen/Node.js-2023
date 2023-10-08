@@ -12,3 +12,12 @@ export function renderPage(page, config={}) {
 
     return navbar + page + footer;
 }
+
+export function renderPageLogin(page, config={}) {
+    const navbar = fs.readFileSync("./public/components/navbar/navbarLogin.html").toString()
+        .replace("$TAB_TITLE", config.tabTitle || "")
+        .replace("$CSS_LINKS", config.cssLinks || "");
+    const footer = fs.readFileSync("./public/components/footer/footerLogin.html").toString();
+
+    return navbar + page + footer;
+}
