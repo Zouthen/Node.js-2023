@@ -1,6 +1,8 @@
 import express from 'express';
 const app = express();
 
+//=============================================================================
+
 import { rateLimit} from 'express-rate-limit';
 
 const allRoutesRatelimiter = rateLimit({
@@ -23,10 +25,6 @@ const authRateLimiter = rateLimit({
 
 app.use("/auth", authRateLimiter);
 
-import authRouter from './routers/authsRouter.js';
-app.use(authRouter);
-
-
 function doorman(req, res, next) {
     if (req.params.secretPhrase === "SesameOpen") {
         next();
@@ -44,10 +42,14 @@ function ipLogger(req, res, next) {
     next();
 }
 
-app.use("/room", ipLogger);  
+app.use("/room", ipLogger); 
+
+import authRouter from './routers/authRouter.js';
+app.use(authRouter);
 
 import roomsRouter from './routers/roomsRouters.js';
 app.use(roomsRouter);
+
 import furnituresRouter from './routers/furnituresRouter.js';
 app.use(furnituresRouter);
 //app.use("/furniture", furnituresRouter);
@@ -60,7 +62,8 @@ app.all('*', (req, res) => {
     res.status(404).send({ data: `Unsupported Request ${req.path}`});
 });
 
-
+//=============================================================================
+// Start the server
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server is running at port ${PORT}`);
