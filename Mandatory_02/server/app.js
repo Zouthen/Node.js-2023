@@ -3,11 +3,15 @@ import "dotenv/config"
 import express from 'express';
 const app = express();
 
+import bodyParser from 'body-parser';
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 import { rateLimit} from 'express-rate-limit';
 
 const allRoutesRatelimiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
-	limit: 200, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
+	limit: 2000, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
 	standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
 	// store: ... , // Use an external store for consistency across multiple server instances.
@@ -17,13 +21,21 @@ app.use(allRoutesRatelimiter);
 
 const authRateLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-	limit: 5, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
+	limit: 5000, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
 	standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
 	// store: ... , // Use an external store for consistency across multiple server instances.
 });
 
 app.use("/auth", authRateLimiter);
+
+const checkAuth = (req, res, next) => {
+	if (req.session && req.session.userId) {
+		return next()
+	} else {
+		return res.status(401).send({ data: "Unauthorised" })
+	}
+}
 
 import helmet from 'helmet';
 app.use(helmet());
@@ -45,7 +57,7 @@ app.use(session({
     cookie: { secure: false } // true for https
   }))
 
-
+// ============== Routers ==============
 
 import usersRouter from './routers/usersRouter.js';
 app.use(usersRouter);
@@ -53,10 +65,18 @@ app.use(usersRouter);
 import beastsRouter from './routers/beastsRouter.js';
 app.use(beastsRouter);
 
-import authRouter from './routers/authRouter.js';
-app.use(authRouter);
+import authFirebaseRouter from "./routers/authFirebaseRouter.js"
+app.use(authFirebaseRouter)
+
+import contactRouter from "./routers/contactRouter.js"
+app.use(contactRouter)
+
+app.get('/protected', checkAuth, (req, res) => {
+	res.status(200).send({ data: 'This is a protected route' });
+  });
 
 
+// ============== Wildcard route ==============
 
 app.get('*', (req, res) => {
   res.send("<h1>404 - Page Not Found</h1>");
