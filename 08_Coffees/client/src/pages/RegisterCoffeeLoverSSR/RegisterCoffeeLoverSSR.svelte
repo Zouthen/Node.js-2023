@@ -6,7 +6,6 @@
 
     async function submitCoffeLoverName() {
         const response = await fetch($BASE_URL + "/api/coffeeLovers", {
-            credentials: "include",
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -6,7 +6,6 @@
 
     onMount(async () => {
         const response = await fetch($BASE_URL + "/api/coffeeLovers", {
-            credentials: "include"
         });
         const result = await response.json();
         coffeeLoverName = result.data;
