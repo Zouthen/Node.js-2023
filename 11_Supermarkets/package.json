@@ -5,7 +5,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "database:create": "node databases/createDatabase.js delete",
+    "database:update": "node databases/createDatabase.js"
   },
   "keywords": [],
   "author": "",
