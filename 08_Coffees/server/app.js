@@ -7,6 +7,8 @@ import "dotenv/config"
 import express from 'express';
 const app = express();
 
+app.use(express.json());
+
 import helmet from 'helmet';
 app.use(helmet());
 
@@ -34,6 +36,9 @@ app.use(usersRouter);
 
 import coffeesRouter from './routers/coffeesRouter.js';
 app.use(coffeesRouter);
+
+import coffeeLoverRouter from './routers/coffeeLoverRouter.js';
+app.use(coffeeLoverRouter);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => { 
