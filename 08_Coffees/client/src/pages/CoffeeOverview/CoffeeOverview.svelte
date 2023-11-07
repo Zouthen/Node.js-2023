@@ -5,7 +5,7 @@
     onMount(async () => {
         const response = await fetch("http://localhost:8080/coffees")
         const result = await response.json();
-        coffees = result.coffees;
+        coffees = result.data;
     });
     
 </script>
