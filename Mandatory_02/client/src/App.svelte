@@ -49,10 +49,15 @@ async function handleLogout() {
 <Router>
     <nav>
         <Link to="/">Home</Link>
+        <span>|</span>
         <Link to="/fantasticbeasts">Fantastic Beasts</Link>
+        <span>|</span>
         <Link to="/potterfacts">Potter Facts</Link>
+        <span>|</span>
         <Link to="/registerpotterhead">Register Potterhead</Link>
+        <span>|</span>
         <Link to="/whodatpotterhead">WhoDatPotterhead</Link>
+        <span>|</span>
         <Link to="/contactus">Contact Us</Link>
 
         {#if !$user}

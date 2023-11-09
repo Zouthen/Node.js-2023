@@ -4,23 +4,21 @@ const router = Router()
 import nodemailer from 'nodemailer';
 
 
-
-//Tested in Postman and works
-
 router.post('/contact', async (req, res) => {
     const { email, subject, message } = req.body;  
     const transporter = nodemailer.createTransport({
-      host: 'smtp.ethereal.email',
-      port: 587,
+      host: 'smtp.zoho.eu',
+      port: 465,
+      secure: true, // use SSL
       auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
-      },
+          user: process.env.nodeMailerUser,
+          pass: process.env.nodeMailerPass
+      }
     });
   
     try {
       await transporter.sendMail({
-        from: "mich5n69@stud.kea.dk",
+        from: process.env.nodeMailerUser,
         to: email,
         subject: subject,
         text: message,
