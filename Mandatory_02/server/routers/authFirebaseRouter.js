@@ -1,7 +1,10 @@
 import { Router } from "express"
 
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase/confic.js';
+
+import nodemailer from 'nodemailer';
 
 const router = Router()
 
@@ -39,9 +42,6 @@ router.post('/auth/logout', (req, res) => {
   });
 });
 
-
-import { createUserWithEmailAndPassword } from "firebase/auth";
-
 router.post('/auth/signup', async (req, res) => {
   console.log("signup");
   try {
@@ -58,11 +58,35 @@ router.post('/auth/signup', async (req, res) => {
     };
 
     res.status(200).send({ data: "Signup successful", userData });
+    sendConfirmationEmail(email);
   } catch (error) {
     console.log(error);
     res.status(401).send({ data: "Signup failed" });
   }
+});
+
+function sendConfirmationEmail(email) {
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.zoho.eu',
+    port: 465,
+    secure: true,
+    auth: {
+        user: process.env.nodeMailerUser,
+        pass: process.env.nodeMailerPass
+    }
+  });
+  try {
+    transporter.sendMail({
+      from: process.env.nodeMailerUser,
+      to: email,
+      subject: 'Signup confirmation',
+      text: `You have succesfully signup for my page!`,
+      html: `<b>You have succesfully signup for my page!</b>`,
+    });
+    res.send( { data: 'Email sent successfully' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+  }
 }
-);
 
 export default router
