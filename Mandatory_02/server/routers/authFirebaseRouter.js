@@ -39,4 +39,30 @@ router.post('/auth/logout', (req, res) => {
   });
 });
 
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
+router.post('/auth/signup', async (req, res) => {
+  console.log("signup");
+  try {
+    if (!req.body) {
+      return res.status(400).send({ data: "Request body is missing" });
+    }
+
+    const { email, password } = req.body;
+
+    const userData = await createUserWithEmailAndPassword(auth, email, password);
+
+    req.session.user = {
+      uid: userData.user.uid,
+    };
+
+    res.status(200).send({ data: "Signup successful", userData });
+  } catch (error) {
+    console.log(error);
+    res.status(401).send({ data: "Signup failed" });
+  }
+}
+);
+
 export default router

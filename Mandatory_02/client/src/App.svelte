@@ -57,7 +57,7 @@ async function handleLogout() {
 		<span>|</span>
 			<Link to="/login">Login</Link>
 			<span>|</span>
-			<Link to="/signup">Create User</Link>
+			<Link to="/signup">Sign Up</Link>
 		{:else}
 		<span>|</span>
 			<Link to="/user">User</Link>

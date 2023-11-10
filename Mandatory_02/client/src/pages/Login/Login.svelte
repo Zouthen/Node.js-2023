@@ -40,27 +40,27 @@
   </script>
   <h3>Login</h3>
   <form on:submit={(event) => handleLogin(event)}>
-    <label for="email">Email</label>
+    <label for="email">Email:</label>
     <input
       type="email"
       name="email"
-      placeholder="Din email"
+      placeholder="Your email"
       bind:value={email}
       required
     />
   
     <br />
   
-    <label for="password">Kodeord</label>
+    <label for="password">Password:</label>
     <input
       type="password"
       name="password"
-      placeholder="Dit kodeord"
+      placeholder="Your password"
       bind:value={password}
       required
     />
   
-    <br />
+    <br /><br />
   
     <button type="submit">Login</button>
   </form>

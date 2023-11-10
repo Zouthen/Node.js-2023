@@ -23,34 +23,34 @@
     const result = await response.json();
 
     if (response.ok) {
-      toastr.info("Beskeden blev sendt");
+      toastr.info("The message was sent");
       email = "";
       subject = "";
       message = "";
     } else {
-      toastr.error("Beskeden blev ikke sendt. Prøv igen.");
+      toastr.error("The message wasn't sent. Try again.");
     }
     
   }
 </script>
 
-<h3>Kontaktside</h3>
+<h3>Contact Page</h3>
 
 <form on:submit={(event) => handleSubmit(event)}>
-  <label for="email">Email</label>
+  <label for="email">Email:</label>
   <input
     type="email"
     name="email"
-    placeholder="Din emailadresse"
+    placeholder="Your email"
     bind:value={email}
     required
   />
   <br />
-  <label for="subject">Emne</label>
+  <label for="subject">Subject:</label>
   <input
     type="text"
     name="subject"
-    placeholder="Emne..."
+    placeholder="Subject..."
     bind:value={subject}
     required
   />
@@ -58,11 +58,11 @@
   <label for="message" />
   <textarea
     name="message"
-    placeholder="Din besked..."
+    placeholder="Your message..."
     bind:value={message}
     required
     style="width:400px; height:200px"
   />
   <br />
-  <button type="submit">Send besked</button>
+  <button type="submit">Send message</button>
 </form>
