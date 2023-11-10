@@ -1,6 +1,9 @@
 <script>
     import { useNavigate, useLocation } from "svelte-navigator";
     import { user } from "../../stores.js";
+
+    import toastr from "toastr";
+    import "toastr/build/toastr.css";
   
     const navigate = useNavigate();
     const location = useLocation();
@@ -25,12 +28,14 @@
         const response = await fetch("http://localhost:8080/auth/signup", options);
   
         if (response.ok) {
+          toastr.info("Sign Up successful");
           const data = await response.json();
           localStorage.setItem("userId", data.userData.user.uid);
           $user = { email, password };
           const from = ($location.state && $location.state.from) || "/";
           navigate(from, { replace: true });
         } else {
+          toastr.error("Sign Up failed");
           console.log("SignUp failed");
         }
       } catch (error) {
