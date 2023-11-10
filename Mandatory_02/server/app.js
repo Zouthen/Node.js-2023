@@ -52,6 +52,9 @@ app.use(session({
 import beastsRouter from './routers/beastsRouter.js';
 app.use(beastsRouter);
 
+import factsRouter from './routers/factsRouter.js';
+app.use(factsRouter);
+
 import authFirebaseRouter from "./routers/authFirebaseRouter.js"
 app.use(authFirebaseRouter)
 
