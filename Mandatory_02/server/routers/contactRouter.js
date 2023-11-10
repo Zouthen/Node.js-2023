@@ -9,7 +9,7 @@ router.post('/contact', async (req, res) => {
     const transporter = nodemailer.createTransport({
       host: 'smtp.zoho.eu',
       port: 465,
-      secure: true, // use SSL
+      secure: true,
       auth: {
           user: process.env.nodeMailerUser,
           pass: process.env.nodeMailerPass

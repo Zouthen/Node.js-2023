@@ -5,11 +5,6 @@ import { auth } from '../firebase/confic.js';
 
 const router = Router()
 
-router.get("/test", (req, res) => {
-  res.send("check")
-})
-
-
 router.post('/auth/login', async (req, res) => {
     try {
         if (!req.body) {
@@ -33,15 +28,15 @@ router.post('/auth/login', async (req, res) => {
   });
 
 
-  router.post('/auth/logout', (req, res) => {
-    req.session.destroy(error => {
-      if (error) {
-        console.error("Error destroying session:", error);
-      } else {
-        res.cookie("sessionID", "", { expires: new Date(0) });
-        res.send({ data: "Logout successful" });
-      }
-    });
+router.post('/auth/logout', (req, res) => {
+  req.session.destroy(error => {
+    if (error) {
+      console.error("Error destroying session:", error);
+    } else {
+      res.cookie("sessionID", "", { expires: new Date(0) });
+      res.send({ data: "Logout successful" });
+    }
   });
+});
 
 export default router

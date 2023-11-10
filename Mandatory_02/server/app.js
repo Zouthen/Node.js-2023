@@ -16,7 +16,6 @@ const allRoutesRatelimiter = rateLimit({
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
 	// store: ... , // Use an external store for consistency across multiple server instances.
 });
-
 app.use(allRoutesRatelimiter);
 
 const authRateLimiter = rateLimit({
@@ -26,16 +25,7 @@ const authRateLimiter = rateLimit({
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
 	// store: ... , // Use an external store for consistency across multiple server instances.
 });
-
 app.use("/auth", authRateLimiter);
-
-const checkAuth = (req, res, next) => {
-	if (req.session && req.session.userId) {
-		return next()
-	} else {
-		return res.status(401).send({ data: "Unauthorised" })
-	}
-}
 
 import helmet from 'helmet';
 app.use(helmet());
@@ -47,7 +37,6 @@ app.use(cors({
   }));
 
 import session from 'express-session';
-// 95b61b9d407f6ba0b6c6f58cbcf7929b31c17e62c127ec895bc36cbbb42a928bfa255ff31fe5dc32beca
 app.use(session({
     // generate a secret key through node in terminal
     // require("crypto").randomBytes(42).toString("hex")
@@ -57,10 +46,8 @@ app.use(session({
     cookie: { secure: false } // true for https
   }))
 
-// ============== Routers ==============
 
-import usersRouter from './routers/usersRouter.js';
-app.use(usersRouter);
+// ============== Routers ==============
 
 import beastsRouter from './routers/beastsRouter.js';
 app.use(beastsRouter);
@@ -70,11 +57,6 @@ app.use(authFirebaseRouter)
 
 import contactRouter from "./routers/contactRouter.js"
 app.use(contactRouter)
-
-app.get('/protected', checkAuth, (req, res) => {
-	res.status(200).send({ data: 'This is a protected route' });
-  });
-
 
 // ============== Wildcard route ==============
 

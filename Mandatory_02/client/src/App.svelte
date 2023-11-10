@@ -4,8 +4,6 @@
     import Home from "./pages/Home/Home.svelte";
     import FantasticBeasts from "./pages/FantasticBeasts/FantasticBeasts.svelte";
     import PotterFacts from "./pages/PotterFacts/PotterFacts.svelte";
-    import RegisterPotterhead from "./pages/RegisterPotterhead/RegisterPotterhead.svelte";
-    import WhoDatPotterhead from "./pages/WhoDatPotterhead/WhoDatPotterhead.svelte";
     import ContactUs from "./pages/ContactUs/ContactUs.svelte";
 
     import User from "./pages/User/User.svelte"
@@ -22,8 +20,6 @@
 
 async function handleLogout() {
 
-	console.log("sker der noget?")
-
 	const options = {
 		method: 'POST',
         headers: {
@@ -32,7 +28,8 @@ async function handleLogout() {
         credentials: 'include',
       }
 
-	// @ts-ignore
+
+  // @ts-ignore
 	const response = await fetch("http://localhost:8080/auth/logout", options)
 	if (response.ok) {
 		user.set(null)
@@ -54,22 +51,18 @@ async function handleLogout() {
         <span>|</span>
         <Link to="/potterfacts">Potter Facts</Link>
         <span>|</span>
-        <Link to="/registerpotterhead">Register Potterhead</Link>
-        <span>|</span>
-        <Link to="/whodatpotterhead">WhoDatPotterhead</Link>
-        <span>|</span>
         <Link to="/contactus">Contact Us</Link>
 
         {#if !$user}
 		<span>|</span>
 			<Link to="/login">Login</Link>
 			<span>|</span>
-			<Link to="/signup">Opret bruger</Link>
+			<Link to="/signup">Create User</Link>
 		{:else}
 		<span>|</span>
-			<Link to="/user">Bruger</Link>
+			<Link to="/user">User</Link>
 			<span>|</span>
-			<a href="/" on:click={handleLogout}>Log ud</a>
+			<a href="/" on:click={handleLogout}>Log out</a>
 		{/if}
     </nav>
 
@@ -77,13 +70,10 @@ async function handleLogout() {
         <Route path="/" component={Home}></Route>
         <Route path="/fantasticbeasts"><FantasticBeasts/></Route>
         <Route path="/potterfacts"><PotterFacts/></Route>
-        <Route path="/registerpotterhead"><RegisterPotterhead/></Route>
-        <Route path="/whodatpotterhead"><WhoDatPotterhead/></Route>
         <Route path="/contactus"><ContactUs/></Route>
-
         <Route path="/login"><Login /></Route>
-		<Route path="/signup"><Signup /></Route>
-		<PrivateRoute path="/user" let:location><User /></PrivateRoute>
+		    <Route path="/signup"><Signup /></Route>
+		    <PrivateRoute path="/user" let:location><User /></PrivateRoute>
         <Route path="*"><Error /></Route>
     </div>
 

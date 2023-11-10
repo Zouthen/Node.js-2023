@@ -6,12 +6,19 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+#dolls {
+  max-width: 60%;
+  height: auto;
+  border-radius: 10px;
 }
 
 a {
@@ -24,6 +31,12 @@ a:hover {
 }
 
 body {
+  background: url(./assets/images/hp_back.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
   margin: 0;
   min-width: 320px;
   min-height: 100vh;

@@ -3,6 +3,6 @@
 
 </script>
 
-<h3>Brugerside</h3>
+<h3>Userpage</h3>
 
-<p>Check it out</p>
+<p>You have succesfully logged in</p>
