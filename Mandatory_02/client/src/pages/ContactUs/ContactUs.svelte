@@ -34,7 +34,7 @@
   }
 </script>
 
-<h3>Contact Page</h3>
+<h1>Contact</h1>
 
 <form on:submit={(event) => handleSubmit(event)}>
   <label for="email">Email:</label>

@@ -38,7 +38,7 @@
       }
     }
   </script>
-  <h3>Login</h3>
+  <h1>Login</h1>
   <form on:submit={(event) => handleLogin(event)}>
     <label for="email">Email:</label>
     <input

@@ -1,5 +1,5 @@
 <style>
-    h3:focus{
+    h1:focus{
        outline:auto; 
     }
 </style>
@@ -11,5 +11,5 @@
     
 
 </script>
-<h3>404 - Siden findes ikke:</h3>
+<h1>404 - Siden findes ikke:</h1>
 <p>{url}</p>

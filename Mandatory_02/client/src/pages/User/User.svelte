@@ -3,6 +3,6 @@
 
 </script>
 
-<h3>User Page</h3>
+<h1>User Page</h1>
 
 <p>You have succesfully logged in</p>

@@ -80,8 +80,8 @@ function sendConfirmationEmail(email) {
       from: process.env.nodeMailerUser,
       to: email,
       subject: 'Signup confirmation',
-      text: `You have succesfully signup for my page!`,
-      html: `<b>You have succesfully signup for my page!</b>`,
+      text: `You have successfully signed up for my page!`,
+      html: `<b>You have successfully signed up for my page!</b>`,
     });
     res.send( { data: 'Email sent successfully' });
   } catch (error) {

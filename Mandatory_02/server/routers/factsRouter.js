@@ -2,7 +2,6 @@ import { Router } from "express";
 const router = Router();
 
 const potterfacts = [
-    // random facts from https://www.buzzfeed.com/ariellecalderon/harry-potter-facts
     "The first Harry Potter book was published in 1998.",
     "The first Harry Potter movie came out in 2001.",
     "The Harry Potter books have sold over 500 million copies worldwide.",
@@ -16,11 +15,6 @@ const potterfacts = [
     "Harry Potter’s favorite Hogsmeade hangout is the Three Broomsticks.",
     "Harry Potter’s favorite Hogsmeade shop is Zonko’s Joke Shop.",
     "Harry Potter’s patronus is a stag like his father’s.",
-
-
-
-
-    
 ];
 
 router.get("/potterfacts", (req, res) => {
