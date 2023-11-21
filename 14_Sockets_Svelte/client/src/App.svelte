@@ -1,7 +1,27 @@
 <script>
+  import Colors from "./pages/Colors/Colors.svelte";
+  import Register from "./pages/Register/Register.svelte";
+  import { BASE_URL } from "./stores/globalStore.js";
+  import { currentUser } from "./stores/usersStore.js";
 
-  import { io } from 'socket.io-client';
-  const socket = io("http://localhost:8080");
+  import { onMount } from "svelte";
+
+  onMount(async () => {
+    const currentUserLocalStorage = localStorage.getItem("currentUser");
+    if (currentUserLocalStorage) {
+      currentUser.set(currentUserLocalStorage);
+    } else {
+      const response = await fetch($BASE_URL + "/api/users", {
+        credentials: "include"
+      });
+      const result = await response.json();
+      currentUser.set(result.data);
+    }
+  })
 </script>
 
-<h1>Colors</h1>
+{#if !$currentUser}
+  <Register/>
+{:else}
+  <Colors/>
+{/if}
