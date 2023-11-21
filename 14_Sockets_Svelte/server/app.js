@@ -22,7 +22,7 @@ const sessionMiddleware = session({
 });
 app.use(sessionMiddleware);
 
-import usersRouter from "./routers/usersRouter.js";
+import usersRouter from "./routers/usersRouters.js";
 app.use(usersRouter);
 
 import http from "http";
