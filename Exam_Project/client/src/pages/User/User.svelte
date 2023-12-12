@@ -1,5 +1,5 @@
 <script>
-    import { user } from "../../stores";
+    import { user } from "../../Stores/usersStore";
 
 </script>
 

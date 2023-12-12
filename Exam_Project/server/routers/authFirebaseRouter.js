@@ -1,4 +1,4 @@
-import { Router } from "express"
+import e, { Router } from "express"
 
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -16,7 +16,6 @@ router.post('/auth/login', async (req, res) => {
           
     
       const { email, password } = req.body;
-
       const userData = await signInWithEmailAndPassword(auth, email, password);
   
       req.session.user = {

@@ -1,29 +1,40 @@
-import "dotenv/config"
-
+import "dotenv/config";
 import express from 'express';
+
 const app = express();
+
+import http from "http";
+import { Server } from "socket.io";
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors: {
+        origin: "*",
+        methods: ["*"]
+    }
+});
+
+// Middlewares
+import path from "path";
+app.use(express.static(path.resolve("../client/dist")));
 
 import bodyParser from 'body-parser';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-import { rateLimit} from 'express-rate-limit';
-
+import { rateLimit } from 'express-rate-limit';
 const allRoutesRatelimiter = rateLimit({
-	windowMs: 15 * 60 * 1000, // 15 minutes
-	limit: 200, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
-	standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
-	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
-	// store: ... , // Use an external store for consistency across multiple server instances.
+    windowMs: 15 * 60 * 1000,
+    limit: 200,
+    standardHeaders: 'draft-7',
+    legacyHeaders: false,
 });
 app.use(allRoutesRatelimiter);
 
 const authRateLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-	limit: 15, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
-	standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
-	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
-	// store: ... , // Use an external store for consistency across multiple server instances.
+    windowMs: 15 * 60 * 1000,
+    limit: 15,
+    standardHeaders: 'draft-7',
+    legacyHeaders: false,
 });
 app.use("/auth", authRateLimiter);
 
@@ -34,7 +45,9 @@ import cors from 'cors';
 app.use(cors({
     credentials: true,
     origin: true
-  }));
+}));
+
+// ============== Session ==============
 
 import session from 'express-session';
 app.use(session({
@@ -44,8 +57,17 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false } // true for https
-  }))
+  }));
+// ============== Sockets ==============
 
+io.on("connection", (socket) => {
+    socket.on("client-choose-a-color", (data) => {
+        io.emit("server-sent-a-color", {
+          color: data.color,
+          name: data.name || "data.color",
+        });
+    });
+});
 
 // ============== Routers ==============
 
@@ -55,25 +77,25 @@ app.use(beastsRouter);
 import factsRouter from './routers/factsRouter.js';
 app.use(factsRouter);
 
-import authFirebaseRouter from "./routers/authFirebaseRouter.js"
-app.use(authFirebaseRouter)
+import authFirebaseRouter from "./routers/authFirebaseRouter.js";
+app.use(authFirebaseRouter);
 
-import contactRouter from "./routers/contactRouter.js"
-app.use(contactRouter)
+import contactRouter from "./routers/contactRouter.js";
+app.use(contactRouter);
 
 // ============== Wildcard route ==============
 
 app.get('*', (req, res) => {
-  res.send("<h1>404 - Page Not Found</h1>");
+    res.send("<h1>404 - Page Not Found</h1>");
 });
 
 app.all('*', (req, res) => {
-  res.status(404).send({ data: `Unsupported Request ${req.path}`});
+    res.status(404).send({ data: `Unsupported Request ${req.path}`});
 });
 
 //=============================================================================
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => { 
+server.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
