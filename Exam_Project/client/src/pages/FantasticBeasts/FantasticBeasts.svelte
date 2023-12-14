@@ -66,7 +66,7 @@
  
 </style>
 
-<h1>Beasts</h1>
+<h1>Bestiary</h1>
 
 <form on:submit|preventDefault={insertBeastName}>
   <label for="name">Beast Name:</label>
@@ -78,9 +78,9 @@
   <h2>Beast Names:</h2>
   <ul>
     {#each beastNames as { id, name }}
-      <li>
+      <h3>
         {name} <button on:click={() => deleteBeastName(id)} id="deletebtn">X</button>
-      </li>
+      </h3>
     {/each}
   </ul>
 </div>

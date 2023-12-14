@@ -11,8 +11,7 @@
 - check the code is clean
 - check the code is commented properly / remove "test" comments
 
+- change allRoutesRatelimiter in app.js limit to 50
+
+- check the database is working properly
 - figure out why i choose a sqlite3 database instead of mongoDB
-
-TODO 
-
-

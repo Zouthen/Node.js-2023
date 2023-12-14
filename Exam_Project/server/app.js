@@ -13,7 +13,6 @@ const io = new Server(server, {
     }
 });
 
-// Middlewares
 import path from "path";
 app.use(express.static(path.resolve("../client/dist")));
 
@@ -51,12 +50,10 @@ app.use(cors({
 
 import session from 'express-session';
 app.use(session({
-    // generate a secret key through node in terminal
-    // require("crypto").randomBytes(42).toString("hex")
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // true for https
+    cookie: { secure: false }
   }));
 // ============== Sockets ==============
 
@@ -71,8 +68,8 @@ io.on("connection", (socket) => {
 
 // ============== Routers ==============
 
-import beastsRouter from './routers/beastsRouter.js';
-app.use(beastsRouter);
+import beastsDBRouter from './routers/beastsDBRouter.js';
+app.use(beastsDBRouter);
 
 import factsRouter from './routers/factsRouter.js';
 app.use(factsRouter);
