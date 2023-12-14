@@ -1,6 +1,5 @@
 <script>
     import { user } from "../../Stores/usersStore";
-
 </script>
 
 <h1>User Page</h1>

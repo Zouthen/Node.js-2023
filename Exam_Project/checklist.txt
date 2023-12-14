@@ -1,12 +1,4 @@
 TODO
-
-- remove unused code
-- check the code is clean
-- check the code is commented properly / remove "test" comments
-
-- change allRoutesRatelimiter in app.js limit to 50
-
-- check the database is working properly
 - figure out why i choose a sqlite3 database instead of mongoDB
 
 
@@ -19,3 +11,7 @@ DONE
 - check the register works
 - check the colors works
 - change the font of toastr back to the original one
+- change allRoutesRatelimiter in app.js limit to 50
+- remove unused code
+- check the code is commented properly / remove "test" comments / console.log
+- check the database is working properly

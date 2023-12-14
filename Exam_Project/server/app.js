@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 import { rateLimit } from 'express-rate-limit';
 const allRoutesRatelimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    limit: 200,
+    limit: 50,
     standardHeaders: 'draft-7',
     legacyHeaders: false,
 });
@@ -54,14 +54,14 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }
-  }));
+}));
 // ============== Sockets ==============
 
 io.on("connection", (socket) => {
     socket.on("client-choose-a-color", (data) => {
         io.emit("server-sent-a-color", {
-          color: data.color,
-          name: data.name || "data.color",
+            color: data.color,
+            name: data.name || "data.color",
         });
     });
 });
@@ -87,7 +87,7 @@ app.get('*', (req, res) => {
 });
 
 app.all('*', (req, res) => {
-    res.status(404).send({ data: `Unsupported Request ${req.path}`});
+    res.status(404).send({ data: `Unsupported Request ${req.path}` });
 });
 
 //=============================================================================

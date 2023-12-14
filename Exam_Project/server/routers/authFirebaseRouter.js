@@ -1,4 +1,4 @@
-import e, { Router } from "express"
+import { Router } from "express"
 
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -9,25 +9,25 @@ import nodemailer from 'nodemailer';
 const router = Router()
 
 router.post('/auth/login', async (req, res) => {
-    try {
-        if (!req.body) {
-            return res.status(400).send({ data: "Request body is missing" });
-          }
-          
-    
-      const { email, password } = req.body;
-      const userData = await signInWithEmailAndPassword(auth, email, password);
-  
-      req.session.user = {
-        uid: userData.user.uid,
-      };
-
-      res.status(200).send({ data: "Login successful", userData });
-    } catch (error) {
-      console.log(error);
-      res.status(401).send({ data: "Login failed" });
+  try {
+    if (!req.body) {
+      return res.status(400).send({ data: "Request body is missing" });
     }
-  });
+
+
+    const { email, password } = req.body;
+    const userData = await signInWithEmailAndPassword(auth, email, password);
+
+    req.session.user = {
+      uid: userData.user.uid,
+    };
+
+    res.status(200).send({ data: "Login successful", userData });
+  } catch (error) {
+    console.log(error);
+    res.status(401).send({ data: "Login failed" });
+  }
+});
 
 
 router.post('/auth/logout', (req, res) => {
@@ -55,9 +55,9 @@ router.post('/auth/signup', async (req, res) => {
     req.session.user = {
       uid: userData.user.uid,
     };
-
-    res.status(200).send({ data: "Signup successful", userData });
     sendConfirmationEmail(email);
+    res.status(200).send({ data: "Signup successful", userData });
+
   } catch (error) {
     console.log(error);
     res.status(401).send({ data: "Signup failed" });
@@ -70,8 +70,8 @@ function sendConfirmationEmail(email) {
     port: 465,
     secure: true,
     auth: {
-        user: process.env.nodeMailerUser,
-        pass: process.env.nodeMailerPass
+      user: process.env.nodeMailerUser,
+      pass: process.env.nodeMailerPass
     }
   });
   try {
@@ -82,7 +82,7 @@ function sendConfirmationEmail(email) {
       text: `You have successfully signed up for my page!`,
       html: `<b>You have successfully signed up for my page!</b>`,
     });
-    res.send( { data: 'Email sent successfully' });
+    res.send({ data: 'Email sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
   }

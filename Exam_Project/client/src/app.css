@@ -8,14 +8,14 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-  
+
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  
+
   font-family: 'Harry Potter', sans-serif;
 
 }
@@ -28,12 +28,12 @@
 
 #deletebtn {
   background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: red;
+  border: none;
+  cursor: pointer;
+  color: red;
 }
 
-#toast-container > .toast-info .toast-error {
+#toast-container>.toast-info .toast-error {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
@@ -42,12 +42,13 @@ a {
   color: #000000;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #000dff;
 }
 
 body {
-  background: url(./assets/images/hp_back.jpg) no-repeat center center fixed; 
+  background: url(./assets/images/hp_back.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -85,9 +86,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -98,12 +101,12 @@ button:focus-visible {
     color: #000000;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #000dff;
   }
+
   button {
     background-color: #f9f9f9;
   }
 }
-
-
