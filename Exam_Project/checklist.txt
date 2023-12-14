@@ -1,0 +1,18 @@
+- change text on home page
+- change text and text size on beasts page (remove weird dots on the left)
+
+- check the contact us works
+- check the login/logout works
+- check the register works
+
+- check the colors works
+
+- remove unused code
+- check the code is clean
+- check the code is commented properly / remove "test" comments
+
+- figure out why i choose a sqlite3 database instead of mongoDB
+
+TODO 
+
+
