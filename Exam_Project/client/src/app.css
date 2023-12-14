@@ -26,6 +26,13 @@
   border-radius: 10px;
 }
 
+#deletebtn {
+  background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: red;
+}
+
 a {
   font-weight: 500;
   color: #000000;
