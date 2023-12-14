@@ -33,6 +33,10 @@
     color: red;
 }
 
+#toast-container > .toast-info .toast-error {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
 a {
   font-weight: 500;
   color: #000000;

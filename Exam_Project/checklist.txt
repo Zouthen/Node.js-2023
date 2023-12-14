@@ -1,11 +1,4 @@
-- change text on home page
-- change text and text size on beasts page (remove weird dots on the left)
-
-- check the contact us works
-- check the login/logout works
-- check the register works
-
-- check the colors works
+TODO
 
 - remove unused code
 - check the code is clean
@@ -15,3 +8,14 @@
 
 - check the database is working properly
 - figure out why i choose a sqlite3 database instead of mongoDB
+
+
+
+DONE
+- change text on home page
+- change text and text size on beasts page (remove weird dots on the left)
+- check the contact us works
+- check the login/logout works
+- check the register works
+- check the colors works
+- change the font of toastr back to the original one

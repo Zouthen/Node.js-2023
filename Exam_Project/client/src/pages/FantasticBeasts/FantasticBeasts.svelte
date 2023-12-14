@@ -61,21 +61,15 @@
   onMount(loadBeastNames);
 </script>
 
-<style>
-  /* Your styles go here */
- 
-</style>
-
 <h1>Bestiary</h1>
 
 <form on:submit|preventDefault={insertBeastName}>
   <label for="name">Beast Name:</label>
   <input type="text" id="name" bind:value={newName} required>
-  <button type="submit">Insert</button>
+  <button type="submit" id="insertbtn">Insert</button>
 </form>
 
 <div id="output">
-  <h2>Beast Names:</h2>
   <ul>
     {#each beastNames as { id, name }}
       <h3>
