@@ -1,0 +1,14 @@
+--------------TODO--------------
+- lav koden om så den er ens hele vejen igennem
+- tilføj features
+- lav socket om
+
+--------------DONE--------------
+- fix rest
+- brug en BASEURL (havde ikke brug for det alligevel, da alt kører på localhost)
+- fix input box så de står lige under hinanden + husk label på alle
+- ikke brug bodyparser
+- fix // @ts-ignore
+    - contact page linje 22
+    - login page linje 25
+    - signup page linje 28

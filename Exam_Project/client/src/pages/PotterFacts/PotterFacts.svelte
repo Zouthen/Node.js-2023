@@ -1,9 +1,10 @@
 <script>
+    // Hvorfor onMount?
     import { onMount } from "svelte";
 
     let potterfacts = [];
     onMount(async () => {
-        const response = await fetch("http://localhost:8080/potterfacts");
+        const response = await fetch("/potterfacts");
         const result = await response.json();
         potterfacts = result.data;
     });

@@ -82,7 +82,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #ffffff;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -110,3 +110,52 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Add this CSS to your existing styles */
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#name,
+#insertbtn {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: #ffffff;
+  color: #000000;
+  transition: border-color 0.25s;
+  height: 2em; /* Adjust height as needed */
+  box-sizing: border-box;
+}
+
+#name:hover,
+#insertbtn:hover {
+  border-color: #646cff;
+}
+
+#name {
+  width: auto;
+  margin-left: 7px;
+}
+
+#insertbtn {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.input-container-contact {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Adjust as needed */
+  align-items: flex-start; /* Align items to the start (left) */
+}
+
+#email {
+  margin-left: 15px;
+  width: auto;
+} 

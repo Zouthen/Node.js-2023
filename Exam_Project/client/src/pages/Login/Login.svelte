@@ -8,6 +8,64 @@
   let email = "";
   let password = "";
 
+  const handleLogin = async() => {
+    try {
+      const response = await fetch("/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: 'include',
+        body: JSON.stringify({ email, password }),
+      });
+
+      
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("userId", data.userData.user.uid);
+        $user = { email, password };
+        const from = ($location.state && $location.state.from) || "/";
+        navigate(from, { replace: true });
+      } else {
+        console.log("Login failed");
+      }
+    } catch (error) {
+      console.log("Error occured", error);
+    }
+  }
+</script>
+
+<h1>Login</h1>
+<form on:submit|preventDefault={handleLogin}>
+  <label for="email">Email:</label>
+  <input
+    type="email"
+    name="email"
+    placeholder="Your email"
+    bind:value={email}
+    required
+    id="email"
+  />
+
+  <br />
+
+  <label for="password">Password:</label>
+  <input
+    type="password"
+    name="password"
+    placeholder="Your password"
+    bind:value={password}
+    required
+  />
+
+  <br /><br />
+
+  <button type="submit">Login</button>
+</form>
+
+
+  <!--
   async function handleLogin(event) {
     event.preventDefault();
     try {
@@ -21,8 +79,9 @@
         body: JSON.stringify({ email, password }),
       };
 
+      // Fix this
       // @ts-ignore
-      const response = await fetch("http://localhost:8080/auth/login", options);
+      const response = await fetch("/auth/login", options);
 
       if (response.ok) {
         const data = await response.json();
@@ -48,6 +107,7 @@
     placeholder="Your email"
     bind:value={email}
     required
+    id="email"
   />
 
   <br />
@@ -65,3 +125,4 @@
 
   <button type="submit">Login</button>
 </form>
+*/-->

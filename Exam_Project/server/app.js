@@ -15,11 +15,13 @@ const io = new Server(server, {
 
 import path from "path";
 app.use(express.static(path.resolve("../client/dist")));
-
+app.use(express.json()); 
+   
+/*
 import bodyParser from 'body-parser';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+*/
 import { rateLimit } from 'express-rate-limit';
 const allRoutesRatelimiter = rateLimit({
     windowMs: 15 * 60 * 1000,

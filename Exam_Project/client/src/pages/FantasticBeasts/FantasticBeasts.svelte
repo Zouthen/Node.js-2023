@@ -1,4 +1,5 @@
 <script>
+  // hvorfor onMount?
   import { onMount } from "svelte";
 
   let beastNames = [];
@@ -6,7 +7,7 @@
 
   const loadBeastNames = async () => {
     try {
-      const response = await fetch("/api/readBeasts");
+      const response = await fetch("/api/beasts");
 
       if (response.ok) {
         const data = await response.json();
@@ -21,7 +22,7 @@
 
   const insertBeastName = async () => {
     try {
-      const response = await fetch("/api/insertBeast", {
+      const response = await fetch("/api/beast", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +44,7 @@
 
   const deleteBeastName = async (id) => {
     try {
-      const response = await fetch(`/api/deleteBeast/${id}`, {
+      const response = await fetch(`/api/beast/${id}`, {
         method: "DELETE",
       });
 
@@ -63,10 +64,10 @@
 
 <h1>Bestiary</h1>
 
-<form on:submit|preventDefault={insertBeastName}>
+<form on:submit|preventDefault={insertBeastName} class="input-container">
   <label for="name">Beast Name:</label>
-  <input type="text" id="name" bind:value={newName} required />
-  <button type="submit" id="insertbtn">Insert</button>
+  <input type="text" id="name" class="input-field" bind:value={newName} required />
+  <button type="submit" id="insertbtn" class="insert-button">Insert</button>
 </form>
 
 <div id="output">

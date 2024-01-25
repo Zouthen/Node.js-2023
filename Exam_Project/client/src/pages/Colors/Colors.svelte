@@ -3,8 +3,8 @@
     import { colorsList } from "../../Stores/colorsStore";
 
     import io from "socket.io-client";
-
-    const socket = io("http://localhost:8080");
+  
+    const socket = io("/");
     let color = "#000000";
     
     function chooseColor() {

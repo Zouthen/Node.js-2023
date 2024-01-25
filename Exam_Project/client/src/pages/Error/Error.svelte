@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
 
     let url = "";
-    onMount(() => (url = window.location.href));
+    url = window.location.href;
 </script>
 
 <h1>404 - Siden findes ikke:</h1>

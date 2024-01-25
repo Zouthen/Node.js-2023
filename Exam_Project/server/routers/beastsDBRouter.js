@@ -10,8 +10,18 @@ db.run(`
     name TEXT
   )
 `);
+//TODO fix error handling in all routes
+router.get('/api/beasts', (req, res) => {
+  db.all('SELECT * FROM beasts', (err, rows) => {
+    if (err) {
+      res.status(500).send({ message: 'Internal Server Error' });
+    } else {
+      res.status(200).send(rows);
+    }
+  });
+});
 
-router.post('/api/insertBeast', (req, res) => {
+router.post('/api/beast', (req, res) => {
   const { name } = req.body;
   db.run('INSERT INTO beasts (name) VALUES (?)', [name], function (err) {
     if (err) {
@@ -22,17 +32,7 @@ router.post('/api/insertBeast', (req, res) => {
   });
 });
 
-router.get('/api/readBeasts', (req, res) => {
-  db.all('SELECT * FROM beasts', (err, rows) => {
-    if (err) {
-      res.status(500).send({ message: 'Internal Server Error' });
-    } else {
-      res.status(200).send(rows);
-    }
-  });
-});
-
-router.delete('/api/deleteBeast/:id', (req, res) => {
+router.delete('/api/beast/:id', (req, res) => {
   const { id } = req.params;
 
   db.run('DELETE FROM beasts WHERE id = ?', [id], function (err) {

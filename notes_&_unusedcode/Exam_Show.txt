@@ -1,0 +1,18 @@
+1. Start på forside
+
+2. Fantastic Beasts som henter data fra db og viser det på siden. Man kan her også tilføje og slette fra listen.
+
+3. Potter Facts som blot henter og viser en liste fra vores server.
+
+4. Contact Us som er en form der sender en mail med et emne og tekst. Demonstrer dette.
+
+5. Sign Up er en form til at oprette en bruger. Ved oprettelse bliver der også sendt en bekræftelsesmail til brugeren.
+
+6. Login er en form til at logge ind med den oprettede bruger.
+
+7. Nu har vi adgang til User, som pt kun er en tom side.
+
+8. Colors lader en vælge en farve og sender den til vores client gennem en socket og tilbage igen. 
+Dette bliver så vist på siden med den valgte farve sat op som en liste.
+
+9. Logout er en knap der logger brugeren ud og sender dem tilbage til forsiden.
