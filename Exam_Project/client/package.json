@@ -12,8 +12,12 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.5.3",
     "svelte": "^4.0.0",
+    "svelte-canvas": "^1.0.2",
     "vite": "^4.4.5"
   },
   "dependencies": {
+    "socket.io-client": "^4.7.4",
+    "svelte-navigator": "^3.2.2",
+    "toastr": "^2.1.4"
   }
 }

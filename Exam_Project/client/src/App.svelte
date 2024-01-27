@@ -2,6 +2,7 @@
   import { Router, Link, Route } from "svelte-navigator";
 
   import Colors from "./pages/Colors/Colors.svelte";
+  import DrawingBoard from "./pages/DrawingBoard/DrawingBoard.svelte";
 
   import Home from "./pages/Home/Home.svelte";
   import FantasticBeasts from "./pages/FantasticBeasts/FantasticBeasts.svelte";
@@ -19,17 +20,16 @@
     user.set({ id: localStorage.getItem("userId") });
   }
 
-  async function handleLogout() {
-    const options = {
+  const handleLogout = async() => {
+    try {
+      const response = await fetch("/auth/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
-    };
+    });
 
-    // @ts-ignore
-    const response = await fetch("http://localhost:8080/auth/logout", options);
     if (response.ok) {
       user.set(null);
       localStorage.removeItem("userId");
@@ -37,7 +37,12 @@
       //toastr...
       console.log("Could not log out");
     }
+  
+  } catch (error) {
+      console.log("Error occured", error);
   }
+}
+
 </script>
 
 <Router>
@@ -61,6 +66,8 @@
       <span>|</span>
       <Link to="/colors">Colors</Link>
       <span>|</span>
+      <Link to="/drawingBoard">DrawingBoard</Link>
+      <span>|</span>
       <a href="/" on:click={handleLogout}>Log out</a>
     {/if}
   </nav>
@@ -74,6 +81,7 @@
     <Route path="/signup"><Signup /></Route>
     <PrivateRoute path="/user" let:location><User /></PrivateRoute>
     <Route path="/colors"><Colors /></Route>
+    <Route path="/drawingBoard"><DrawingBoard /></Route>
     <Route path="*"><Error /></Route>
   </div>
 </Router>

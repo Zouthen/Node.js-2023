@@ -58,7 +58,46 @@ app.use(session({
     cookie: { secure: false }
 }));
 // ============== Sockets ==============
+let drawHistory = [];
 
+io.on('connection', (socket) => {
+  console.log('User connected');
+
+  // Send the drawing history to the newly connected client
+  socket.emit('drawHistory', drawHistory);
+
+  // Handle drawing events
+  socket.on('draw', (data) => {
+    // Add the drawing data to the history
+    drawHistory.push(data);
+
+    // Broadcast the drawing data to all connected clients
+    io.emit('draw', data);
+  });
+
+  // Handle disconnection
+  socket.on('disconnect', () => {
+    console.log('User disconnected');
+  });
+});
+/*
+// Server side
+io.on('connection', (socket) => {
+    console.log('User connected');
+    // Handle drawing events
+    socket.on('draw', (data) => {
+      // Broadcast the drawing data to all connected clients
+      io.emit('draw', data);
+    });
+  
+    // Handle disconnection
+    socket.on('disconnect', () => {
+      console.log('User disconnected');
+    });
+  });
+  */
+
+/*
 io.on("connection", (socket) => {
     socket.on("client-choose-a-color", (data) => {
         io.emit("server-sent-a-color", {
@@ -67,6 +106,7 @@ io.on("connection", (socket) => {
         });
     });
 });
+*/
 
 // ============== Routers ==============
 
