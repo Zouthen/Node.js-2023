@@ -11,6 +11,7 @@
   let drawing = false;
   let lastX = 0;
   let lastY = 0;
+  
 
   onMount(() => {
     socket = io('/');
