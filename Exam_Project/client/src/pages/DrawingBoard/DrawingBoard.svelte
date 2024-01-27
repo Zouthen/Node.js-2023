@@ -12,7 +12,6 @@
   let lastX = 0;
   let lastY = 0;
   
-
   onMount(() => {
     socket = io('/');
     ctx = canvas.getContext('2d');
