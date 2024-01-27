@@ -131,3 +131,4 @@ dist
 
 # SQLlite files
 *.sqlite
+Exam_Project/server/examdb.sqlite
