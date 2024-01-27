@@ -3,7 +3,6 @@ const router = Router()
 
 import nodemailer from 'nodemailer';
 
-
 router.post('/api/contact', async (req, res) => {
   const { email, subject, message } = req.body;
   const transporter = nodemailer.createTransport({
