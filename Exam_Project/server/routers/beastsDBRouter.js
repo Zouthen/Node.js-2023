@@ -14,20 +14,20 @@ db.run(`
 router.get('/api/beasts', (req, res) => {
   db.all('SELECT * FROM beasts', (err, rows) => {
     if (err) {
-      res.status(500).send({ message: 'Internal Server Error' });
+      res.send({ message: 'Internal Server Error' });
     } else {
-      res.status(200).send(rows);
+      res.send(rows);
     }
   });
 });
 
 router.post('/api/beast', (req, res) => {
   const { name } = req.body;
-  db.run('INSERT INTO beasts (name) VALUES (?)', [name], function (err) {
+  db.run('INSERT INTO beasts (name) VALUES (?)', [name], (err) => {
     if (err) {
-      res.status(500).send({ message: 'Internal Server Error' });
+      res.send({ message: 'Internal Server Error' });
     } else {
-      res.status(201).send({ message: 'Document inserted successfully' });
+      res.send({ message: 'Document inserted successfully' });
     }
   });
 });
@@ -35,11 +35,11 @@ router.post('/api/beast', (req, res) => {
 router.delete('/api/beast/:id', (req, res) => {
   const { id } = req.params;
 
-  db.run('DELETE FROM beasts WHERE id = ?', [id], function (err) {
+  db.run('DELETE FROM beasts WHERE id = ?', [id], (err) => {
     if (err) {
-      res.status(500).send({ message: 'Internal Server Error' });
+      res.send({ message: 'Internal Server Error' });
     } else {
-      res.status(200).send({ message: 'Document deleted successfully' });
+      res.send({ message: 'Document deleted successfully' });
     }
   });
 });

@@ -27,7 +27,7 @@ router.post('/api/contact', async (req, res) => {
     res.send({ data: 'Email sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
-    res.status(500).send({ data: 'Error sending email' });
+    res.send({ data: 'Error sending email' });
   }
 });
 

@@ -11,7 +11,7 @@ const router = Router()
 router.post('/auth/login', async (req, res) => {
   try {
     if (!req.body) {
-      return res.status(400).send({ data: "Request body is missing" });
+      return res.send({ data: "Request body is missing" });
     }
 
 
@@ -22,10 +22,10 @@ router.post('/auth/login', async (req, res) => {
       uid: userData.user.uid,
     };
 
-    res.status(200).send({ data: "Login successful", userData });
+    res.send({ data: "Login successful", userData });
   } catch (error) {
     console.log(error);
-    res.status(401).send({ data: "Login failed" });
+    res.send({ data: "Login failed" });
   }
 });
 

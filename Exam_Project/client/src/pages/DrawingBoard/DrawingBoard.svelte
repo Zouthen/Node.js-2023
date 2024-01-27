@@ -1,4 +1,3 @@
-<!-- DrawingBoard.svelte -->
 <script>
   import { Canvas } from 'svelte-canvas';
   import { onMount, onDestroy } from 'svelte';

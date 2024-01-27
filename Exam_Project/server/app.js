@@ -80,22 +80,6 @@ io.on('connection', (socket) => {
     console.log('User disconnected');
   });
 });
-/*
-// Server side
-io.on('connection', (socket) => {
-    console.log('User connected');
-    // Handle drawing events
-    socket.on('draw', (data) => {
-      // Broadcast the drawing data to all connected clients
-      io.emit('draw', data);
-    });
-  
-    // Handle disconnection
-    socket.on('disconnect', () => {
-      console.log('User disconnected');
-    });
-  });
-  */
 
 /*
 io.on("connection", (socket) => {

@@ -3,6 +3,7 @@
 - tilføj features
 - lav socket om
 
+
 --------------DONE--------------
 - fix rest
 - brug en BASEURL (havde ikke brug for det alligevel, da alt kører på localhost)
@@ -12,3 +13,4 @@
     - contact page linje 22
     - login page linje 25
     - signup page linje 28
+- dont push db
