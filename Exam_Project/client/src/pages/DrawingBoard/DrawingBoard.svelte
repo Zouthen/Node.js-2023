@@ -5,7 +5,7 @@
 
   let socket;
   let canvas;
-  let topSpace = 30;
+  let topSpace = 50;
   let ctx;
   let drawing = false;
   let lastX = 0;

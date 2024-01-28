@@ -10,6 +10,7 @@ db.run(`
     name TEXT
   )
 `);
+
 //TODO fix error handling in all routes
 router.get('/api/beasts', (req, res) => {
   db.all('SELECT * FROM beasts', (err, rows) => {

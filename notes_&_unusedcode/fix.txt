@@ -2,6 +2,7 @@
 - lav koden om så den er ens hele vejen igennem
 - tilføj features
 - lav socket om
+- fjern alt der ikke bliver brugt
 
 
 --------------DONE--------------
