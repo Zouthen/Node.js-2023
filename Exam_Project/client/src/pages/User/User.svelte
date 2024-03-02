@@ -1,7 +1,8 @@
 <script>
-    import { user } from "../../Stores/usersStore";
+    let userEmail = '';
+    userEmail = localStorage.getItem('userEmail');
 </script>
 
 <h1>User Page</h1>
 
-<p>You have succesfully logged in</p>
+<p>You have successfully logged in with email: {userEmail}</p>

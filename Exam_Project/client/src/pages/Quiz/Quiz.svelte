@@ -2,13 +2,14 @@
     let questions = [];
     let currentQuestionIndex = 0;
     let score = 0;
-    let selectedAnswer = '';
+    let selectedAnswer = null;
   
     async function fetchQuestions() {
         try {
             const response = await fetch('/api/quiz');
             if (response.ok) {
                 questions = await response.json();
+                selectedAnswer = null;
             } else {
                 throw new Error('Failed to fetch questions');
             }
@@ -27,7 +28,7 @@
 
         if (currentQuestionIndex < questions.length - 1) {
             currentQuestionIndex++;
-            selectedAnswer = '';
+            selectedAnswer = null;
         } else {
             alert(`Quiz completed! Your score: ${score}/${questions.length}`);
         }
@@ -36,7 +37,7 @@
     function resetQuiz() {
       currentQuestionIndex = 0;
       score = 0;
-      selectedAnswer = '';
+      selectedAnswer = null;
     }
 
   </script>
@@ -57,7 +58,7 @@
             {/each}
         </div>
         <div class="button-container">
-            <button type="submit" class="quiz-button">Submit Answer</button>
+            <button type="submit" class="quiz-button" disabled={selectedAnswer === null}>Submit Answer</button>
             <button type="button" on:click|preventDefault={resetQuiz} class="quiz-button">Reset Quiz</button>
         </div>
     </form>

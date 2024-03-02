@@ -24,6 +24,7 @@
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("userId", data.userData.user.uid);
+        localStorage.setItem("userEmail", data.userData.user.email);
         $user = { email, password };
         const from = ($location.state && $location.state.from) || "/";
         navigate(from, { replace: true });
