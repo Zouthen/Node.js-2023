@@ -17,11 +17,6 @@ import path from "path";
 app.use(express.static(path.resolve("../client/dist")));
 app.use(express.json()); 
    
-/*
-import bodyParser from 'body-parser';
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-*/
 import { rateLimit } from 'express-rate-limit';
 const allRoutesRatelimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
@@ -57,40 +52,19 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false }
 }));
+
 // ============== Sockets ==============
-let drawHistory = [];
-
 io.on('connection', (socket) => {
-  console.log('User connected');
-
-  // Send the drawing history to the newly connected client
-  socket.emit('drawHistory', drawHistory);
-
-  // Handle drawing events
-  socket.on('draw', (data) => {
-    // Add the drawing data to the history
-    drawHistory.push(data);
-
-    // Broadcast the drawing data to all connected clients
-    io.emit('draw', data);
-  });
-
-  // Handle disconnection
-  socket.on('disconnect', () => {
-    console.log('User disconnected');
-  });
-});
-
-/*
-io.on("connection", (socket) => {
-    socket.on("client-choose-a-color", (data) => {
-        io.emit("server-sent-a-color", {
-            color: data.color,
-            name: data.name || "data.color",
-        });
+    console.log('A user connected');
+  
+    socket.on('disconnect', () => {
+      console.log('User disconnected');
     });
-});
-*/
+  
+    socket.on('chat message', (msg) => {
+      io.emit('chat message', msg);
+    });
+  });
 
 // ============== Routers ==============
 
@@ -102,6 +76,9 @@ app.use(authFirebaseRouter);
 
 import contactRouter from "./routers/contactRouter.js";
 app.use(contactRouter);
+
+import quizRouter from "./routers/quizRouter.js";
+app.use(quizRouter);
 
 // ============== Wildcard route ==============
 

@@ -1,7 +1,6 @@
 --------------TODO--------------
 - lav koden om så den er ens hele vejen igennem
 - tilføj features
-- lav socket om
 - fjern alt der ikke bliver brugt
 
 
@@ -15,3 +14,4 @@
     - login page linje 25
     - signup page linje 28
 - dont push db
+- lav socket om

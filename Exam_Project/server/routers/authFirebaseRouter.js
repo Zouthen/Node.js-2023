@@ -56,11 +56,11 @@ router.post('/auth/signup', async (req, res) => {
       uid: userData.user.uid,
     };
     sendConfirmationEmail(email);
-    res.status(200).send({ data: "Signup successful", userData });
+    res.send({ data: "Signup successful", userData });
 
   } catch (error) {
     console.log(error);
-    res.status(401).send({ data: "Signup failed" });
+    res.send({ data: "Signup failed" });
   }
 });
 

@@ -1,10 +1,11 @@
 <script>
   import { Router, Link, Route } from "svelte-navigator";
 
-  import DrawingBoard from "./pages/DrawingBoard/DrawingBoard.svelte";
+  import Chat from "./pages/Chat/Chat.svelte";
 
   import Home from "./pages/Home/Home.svelte";
   import FantasticBeasts from "./pages/FantasticBeasts/FantasticBeasts.svelte";
+  import Quiz from "./pages/Quiz/Quiz.svelte";
   import ContactUs from "./pages/ContactUs/ContactUs.svelte";
 
   import User from "./pages/User/User.svelte";
@@ -49,6 +50,8 @@
     <span>|</span>
     <Link to="/fantasticbeasts">Fantastic Beasts</Link>
     <span>|</span>
+    <Link to="/quiz">Quiz</Link>
+    <span>|</span>
     <Link to="/contactus">Contact Us</Link>
 
     {#if !$user}
@@ -60,7 +63,7 @@
       <span>|</span>
       <Link to="/user">User</Link>
       <span>|</span>
-      <Link to="/drawingBoard">DrawingBoard</Link>
+      <Link to="/chat">Chat</Link>
       <span>|</span>
       <a href="/" on:click={handleLogout}>Log out</a>
     {/if}
@@ -69,11 +72,12 @@
   <div>
     <Route path="/" component={Home}></Route>
     <Route path="/fantasticbeasts"><FantasticBeasts /></Route>
+    <Route path="/quiz"><Quiz /></Route>
     <Route path="/contactus"><ContactUs /></Route>
     <Route path="/login"><Login /></Route>
     <Route path="/signup"><Signup /></Route>
     <PrivateRoute path="/user" let:location><User /></PrivateRoute>
-    <Route path="/drawingBoard"><DrawingBoard /></Route>
+    <Route path="/chat"><Chat /></Route>
     <Route path="*"><Error /></Route>
   </div>
 </Router>

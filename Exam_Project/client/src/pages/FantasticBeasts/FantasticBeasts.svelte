@@ -1,5 +1,4 @@
 <script>
-  // hvorfor onMount?
   import { onMount } from "svelte";
 
   let beastNames = [];
