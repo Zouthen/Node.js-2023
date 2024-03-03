@@ -5,26 +5,31 @@
     let messages = [];
     let message = '';
     const socket = io('/');
+
+    const userEmail = localStorage.getItem('userEmail');
   
     onMount(() => {
-      socket.on('chat message', (msg) => {
-        messages = [...messages, msg];
+      socket.on('chat message', (data) => {
+        messages = [...messages, data];
       });
     });
   
     function sendMessage() {
-      socket.emit('chat message', message);
+      socket.emit('chat message', { text: message, email: userEmail });
       message = '';
     }
   </script>
-  
-  <div>
-    <ul>
-      {#each messages as msg}
-        <li>{msg}</li>
-      {/each}
-    </ul>
-    <input type="text" bind:value={message} on:keydown={(e) => e.key === 'Enter' && sendMessage()} />
-    <button on:click={sendMessage}>Send</button>
+
+<h2>Chat</h2>
+
+<div class="chat-container">
+  <ul class="chat-messages">
+    {#each messages as {text, email}}
+      <li>{email}: {text}</li>
+    {/each}
+  </ul>
+  <div class="chat-input-container">
+    <input type="text" class="chat-input" bind:value={message} on:keydown={(e) => e.key === 'Enter' && sendMessage()} />
+    <button class="chat-send-btn" on:click={sendMessage}>Send</button>
   </div>
-  
+</div>
