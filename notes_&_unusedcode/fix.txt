@@ -1,7 +1,9 @@
 --------------TODO--------------
 - tilføj features
 
-
+- add user to db when signup
+- make user able to add name to profile (db)
+- make user able to see last quiz score
 
 --------------DONE--------------
 - fix rest

@@ -31,6 +31,9 @@
             selectedAnswer = null;
         } else {
             alert(`Quiz completed! Your score: ${score}/${questions.length}`);
+            localStorage.setItem('quizScore', score.toString());
+            localStorage.setItem('quizlength', questions.length.toString());
+
         }
     }
 

@@ -82,7 +82,7 @@ function sendConfirmationEmail(email) {
       text: `You have successfully signed up for my page!`,
       html: `<b>You have successfully signed up for my page!</b>`,
     });
-    res.send({ data: 'Email sent successfully' });
+    //res.send({ data: 'Email sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
   }

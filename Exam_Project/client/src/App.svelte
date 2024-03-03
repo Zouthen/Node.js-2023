@@ -1,4 +1,7 @@
 <script>
+  import toastr from "toastr";
+  import "toastr/build/toastr.css";
+
   import { Router, Link, Route } from "svelte-navigator";
 
   import Chat from "./pages/Chat/Chat.svelte";
@@ -30,10 +33,10 @@
     });
 
     if (response.ok) {
-      user.set(null);
-      localStorage.removeItem("userId");
+      user.set(null); 
+      localStorage.clear();
     } else {
-      //toastr...
+      toastr.error("Could not log out");
       console.log("Could not log out");
     }
   
