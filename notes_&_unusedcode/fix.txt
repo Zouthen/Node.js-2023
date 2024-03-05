@@ -3,7 +3,6 @@
 
 - add user to db when signup
 - make user able to add name to profile (db)
-- make user able to see last quiz score
 
 --------------DONE--------------
 - fix rest
@@ -18,3 +17,4 @@
 - lav socket om
 - fjern alt der ikke bliver brugt
 - lav koden om så den er ens hele vejen igennem
+- make user able to see last quiz score

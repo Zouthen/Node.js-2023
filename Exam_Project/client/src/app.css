@@ -176,27 +176,27 @@
   .chat-messages {
     list-style-type: none;
     padding: 0;
-    width: 50%; /* Adjust width as needed */
-    max-height: 300px; /* Adjust height as needed */
+    width: 50%;
+    max-height: 300px;
     overflow-y: auto;
     margin-bottom: 20px;
-    background: rgba(255,255,255,0.1); /* Slight transparency for background */
+    background: rgba(255,255,255,0.1);
     border-radius: 8px;
     padding: 10px;
   }
   
   .chat-messages li {
     margin: 5px 0;
-    color: #FFF; /* White text color */
+    color: #FFF;
     text-align: left;
     padding: 8px;
-    background: rgba(0,0,0,0.3); /* Slight transparency for individual messages */
+    background: rgba(0,0,0,0.3);
     border-radius: 4px;
   }
   
   .chat-input-container {
     display: flex;
-    width: 50%; /* Match the width of the chat messages list */
+    width: 50%;
     justify-content: space-between;
   }
   
@@ -207,7 +207,7 @@
     border: 1px solid transparent;
     background-color: #ffffff;
     color: #000000;
-    margin-right: 10px; /* Space between input and button */
+    margin-right: 10px;
   }
   
   .chat-send-btn {

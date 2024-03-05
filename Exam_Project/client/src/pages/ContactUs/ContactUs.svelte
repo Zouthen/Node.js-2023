@@ -55,7 +55,7 @@
       bind:value={subject}
       required
     />
-  <br /><br />
+  <br />
 
   <div class="input-container-contact">
     <label for="message">Message:</label>
@@ -67,7 +67,7 @@
       style="width: 400px; height: 200px"
     />
   </div>
-  <br />
+
 
   <button type="submit">Send message</button>
 </form>

@@ -17,9 +17,7 @@
             console.error('Failed to fetch questions:', error);
         }
     }
-  
     fetchQuestions();
-
 
     function submitAnswer() {
         if (selectedAnswer === questions[currentQuestionIndex].correctAnswer) {
@@ -48,7 +46,6 @@
 
 {#if questions.length > 0}
 <div>
-
     <h2>{questions[currentQuestionIndex].question}</h2>
     <div class="input-container">
     <form on:submit|preventDefault={submitAnswer}>
